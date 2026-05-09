@@ -1,4 +1,4 @@
-import {MechanismLigament2d, MechanismRoot2d} from "./mech2d.js";
+import {MechanismLigament2d} from "./mech2d.js";
 
 const properties = document.getElementById("properties");
 
@@ -20,10 +20,23 @@ export function refreshProperties(selectedObject, canvas) {
         colorPickerLabel.appendChild(colorPicker);
         properties.appendChild(colorPickerLabel);
     }
-    else if (selectedObject instanceof MechanismLigament2d) {
+    else {
+        const name = document.createElement("input");
+        name.setAttribute("type", "text");
+        name.setAttribute("value", selectedObject.name);
+        name.addEventListener("input", (e) => {
+            if (e.target.value === "") {
+                e.target.value = selectedObject.name;
+            }
+            selectedObject.name = e.target.value;
+        })
+        const nameLabel = document.createElement("label");
+        nameLabel.appendChild(document.createTextNode("Name: "));
+        nameLabel.appendChild(name);
+        properties.appendChild(nameLabel);
+
         const xPos = document.createElement("input");
         xPos.setAttribute("type", "number");
-        xPos.setAttribute("id", "xPos");
         xPos.setAttribute("value", selectedObject.x);
         xPos.addEventListener("input", (e) => {
             selectedObject.x = e.target.value;
@@ -35,7 +48,6 @@ export function refreshProperties(selectedObject, canvas) {
 
         const yPos = document.createElement("input");
         yPos.setAttribute("type", "number");
-        yPos.setAttribute("id", "yPos");
         yPos.setAttribute("value", selectedObject.y);
         yPos.addEventListener("input", (e) => {
             selectedObject.y = e.target.value;
@@ -44,10 +56,10 @@ export function refreshProperties(selectedObject, canvas) {
         yPosLabel.appendChild(document.createTextNode("Y Position "));
         yPosLabel.appendChild(yPos);
         properties.appendChild(yPosLabel);
-
+    }
+    if (selectedObject instanceof MechanismLigament2d) {
         const angle = document.createElement("input");
         angle.setAttribute("type", "number");
-        angle.setAttribute("id", "angle");
         angle.setAttribute("value", selectedObject.angle);
         angle.addEventListener("input", (e) => {
             selectedObject.angle = e.target.value;
@@ -59,7 +71,6 @@ export function refreshProperties(selectedObject, canvas) {
 
         const length = document.createElement("input");
         length.setAttribute("type", "number");
-        length.setAttribute("id", "length");
         length.setAttribute("value", selectedObject.length);
         length.addEventListener("input", (e) => {
             selectedObject.length = e.target.value;
@@ -71,9 +82,11 @@ export function refreshProperties(selectedObject, canvas) {
 
         const lineWidth = document.createElement("input");
         lineWidth.setAttribute("type", "number");
-        lineWidth.setAttribute("id", "lineWidth");
         lineWidth.setAttribute("value", selectedObject.lineWidth);
         lineWidth.addEventListener("input", (e) => {
+            if (e.target.value < 0) {
+                e.target.value = 0;
+            }
             selectedObject.lineWidth = e.target.value;
         });
         const lineWidthLabel = document.createElement("label");
@@ -83,7 +96,6 @@ export function refreshProperties(selectedObject, canvas) {
 
         const color = document.createElement("input");
         color.setAttribute("type", "color");
-        color.setAttribute("id", "color");
         color.setAttribute("value", selectedObject.color);
         color.addEventListener("input", (e) => {
             selectedObject.color = e.target.value;
@@ -92,8 +104,5 @@ export function refreshProperties(selectedObject, canvas) {
         colorLabel.appendChild(document.createTextNode("Color "));
         colorLabel.appendChild(color);
         properties.appendChild(colorLabel);
-    }
-    else if (selectedObject instanceof MechanismRoot2d) {
-        console.log("Root properties");
     }
 }
