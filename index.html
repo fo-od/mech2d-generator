@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Mechanism2d Generator</title>
+        <link rel="stylesheet" href="main.css" />
+    </head>
+
+    <div id="contextMenu" class="context-menu outset" style="display: none">
+        <button id="append">Add New Ligament</button>
+        <div class="divider"></div>
+        <button id="delete">Delete</button>
+    </div>
+
+    <div id="container">
+        <div class="flex-row">
+            <div class="canvas-area">
+                <canvas id="canvas" width="500" height="500"></canvas>
+            </div>
+
+            <div
+                id="side-panel"
+                class="flex-col outset"
+                style="padding: 0.5rem"
+            >
+                <div class="group panel">
+                    <p class="legend">Object Tree</p>
+                    <ul id="tree">
+                        <li>
+                            <span class="caret name" id="mech">Mechanism</span>
+                            <ul id="mech-objects" class="nested"></ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="bottom-panel" class="flex-col outset" style="padding: 0.5rem">
+            <div class="group panel">
+                <p class="legend">Object Properties</p>
+                <div id="properties">
+                    Color:
+                    <input type="color" id="bgcolor" value="#000080" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</html>
