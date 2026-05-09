@@ -112,7 +112,7 @@ appendButton.addEventListener("click", (e) => {
       20,
       -90,
       10,
-      "green",
+      "#00aa00",
   );
   target.object.append(ligament);
   contextMenu.style.display = "none";
