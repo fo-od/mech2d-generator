@@ -50,7 +50,7 @@ export function refreshProperties(selectedObject, canvas) {
         xPos.setAttribute("type", "number");
         xPos.setAttribute("value", selectedObject.x);
         xPos.addEventListener("input", (e) => {
-            selectedObject.x = e.target.value;
+            selectedObject.x = Number(e.target.value);
         });
         const xPosLabel = document.createElement("label");
         xPosLabel.appendChild(document.createTextNode("X Position "));
@@ -61,7 +61,7 @@ export function refreshProperties(selectedObject, canvas) {
         yPos.setAttribute("type", "number");
         yPos.setAttribute("value", selectedObject.y);
         yPos.addEventListener("input", (e) => {
-            selectedObject.y = e.target.value;
+            selectedObject.y = Number(e.target.value);
         });
         const yPosLabel = document.createElement("label");
         yPosLabel.appendChild(document.createTextNode("Y Position "));
@@ -73,7 +73,7 @@ export function refreshProperties(selectedObject, canvas) {
         angle.setAttribute("type", "number");
         angle.setAttribute("value", selectedObject.angle);
         angle.addEventListener("input", (e) => {
-            selectedObject.angle = e.target.value;
+            selectedObject.angle = Number(e.target.value);
         });
         const angleLabel = document.createElement("label");
         angleLabel.appendChild(document.createTextNode("Angle "));
@@ -84,7 +84,7 @@ export function refreshProperties(selectedObject, canvas) {
         length.setAttribute("type", "number");
         length.setAttribute("value", selectedObject.length);
         length.addEventListener("input", (e) => {
-            selectedObject.length = e.target.value;
+            selectedObject.length = Number(e.target.value);
         });
         const lengthLabel = document.createElement("label");
         lengthLabel.appendChild(document.createTextNode("Length "));
@@ -98,7 +98,7 @@ export function refreshProperties(selectedObject, canvas) {
             if (e.target.value < 0) {
                 e.target.value = 0;
             }
-            selectedObject.lineWidth = e.target.value;
+            selectedObject.lineWidth = Number(e.target.value);
         });
         const lineWidthLabel = document.createElement("label");
         lineWidthLabel.appendChild(document.createTextNode("Line Width "));
