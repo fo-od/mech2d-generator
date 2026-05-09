@@ -49,7 +49,7 @@ export class MechanismRoot2d extends MechanismObject2d {
 
     draw(ctx) {
         ctx.fillStyle = "white";
-        ctx.fillRect(this.x, this.y, 10, 10);
+        ctx.fillRect(this.x, this.y, 5, 5);
     }
 }
 
