@@ -24,11 +24,22 @@ export function refreshProperties(selectedObject, canvas) {
         const name = document.createElement("input");
         name.setAttribute("type", "text");
         name.setAttribute("value", selectedObject.name);
-        name.addEventListener("input", (e) => {
-            if (e.target.value === "") {
+        name.addEventListener("change", (e) => {
+            // reset input if the new name is empty
+            if (e.target.value.trim() === "") {
                 e.target.value = selectedObject.name;
+            } else {
+                const selectedName = document.getElementById(selectedObject.name);
+                const selectedItem = selectedName ? selectedName.closest("span") : null;
+
+                // rename object in parent's list
+                selectedObject.parent.objects.delete(selectedObject.name);
+                selectedObject.parent.objects.set(e.target.value, selectedObject);
+                // actually rename the object
+                selectedObject.name = e.target.value;
+                selectedName.id = e.target.value;
+                selectedItem.textContent = e.target.value;
             }
-            selectedObject.name = e.target.value;
         })
         const nameLabel = document.createElement("label");
         nameLabel.appendChild(document.createTextNode("Name: "));

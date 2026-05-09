@@ -56,7 +56,6 @@ treeRoot.addEventListener("click", (e) => {
 
 /* Context Menu */
 const contextMenu = document.getElementById("contextMenu");
-const renameButton = contextMenu.querySelector("#rename");
 const appendButton = contextMenu.querySelector("#append");
 const deleteButton = contextMenu.querySelector("#delete");
 
@@ -79,26 +78,6 @@ treeRoot.addEventListener("contextmenu", (e) => {
   contextMenu.style.left = e.pageX + "px";
   contextMenu.style.top = e.pageY + "px";
 });
-
-renameButton.addEventListener("click", (e) => {
-  e.stopPropagation();
-  const target = getSelectedTreeTarget();
-  if (!target) {
-    return;
-  }
-  
-  const selectedName = document.getElementById(target.object.name);
-  const selectedItem = selectedName ? selectedName.closest("span") : null;
-  if (selectedItem) {
-    const newName = prompt("Enter new name:", target.object.name);
-    if (newName.trim() !== "") {
-      selectedItem.textContent = newName;
-      target.object.name = newName;
-      selectedName.id = newName;
-    }
-  }
-  contextMenu.style.display = "none";
-})
 
 appendButton.addEventListener("click", (e) => {
   e.stopPropagation();
