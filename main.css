@@ -22,8 +22,6 @@ body {
 .flex-row {
     display: flex;
     flex-direction: row;
-    min-height: 0;
-    align-items: stretch;
 }
 
 .flex-col {
@@ -34,8 +32,6 @@ body {
 #container {
     min-height: 100%;
     background: #d8d8d8;
-    display: flex;
-    flex-direction: column;
 }
 
 .canvas-area {
