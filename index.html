@@ -6,12 +6,6 @@
     <script src="main.js" type="module"></script>
 </head>
 
-<div id="contextMenu" class="context-menu outset" style="display: none">
-    <button id="append">Add New Ligament</button>
-    <div class="divider"></div>
-    <button id="delete">Delete</button>
-</div>
-
 <div id="container" class="flex-row">
     <div class="flex-col">
         <div class="canvas-area">
@@ -33,12 +27,20 @@
     >
         <div class="group panel">
             <p class="legend">Object Tree</p>
-            <ul id="tree">
-                <li>
-                    <span class="caret name" id="mech">Mechanism</span>
-                    <ul id="mech-objects" class="nested"></ul>
-                </li>
-            </ul>
+            <!-- i dont know what to name it ToT -->
+            <div class="tree-and-actions"> 
+                <ul id="tree">
+                    <li>
+                        <span class="caret name" id="mech">Mechanism</span>
+                        <ul id="mech-objects" class="nested"></ul>
+                    </li>
+                </ul>
+                <div class="space"></div>
+                <div class="actions">
+                    <button id="append">+ Add Ligament</button>
+                    <button id="delete">- Delete Ligament</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
