@@ -172,6 +172,40 @@ ul,
 #tree ul {
     margin: 0;
     padding-left: 1rem;
+    position: relative;
+}
+
+#tree ul.active::before {
+    content: "";
+    border-left: 2px dashed #848584;
+    position: absolute;
+    top: 0.25rem;
+    bottom: 0.25rem;
+    left: 0.5rem;
+    width: 2px;
+}
+
+#tree ul.active > li::before {
+    content: "";
+    position: absolute;
+    top: 0.75rem;
+    left: -0.5rem;
+    width: 0.5rem;
+    border-top: 2px dashed #848584;
+}
+
+#tree ul.active > li {
+    position: relative;
+}
+
+#tree ul.active > li:last-child::after {
+    content: "";
+    position: absolute;
+    top: 14px;
+    left: -15px;
+    bottom: 0;
+    width: 10px;
+    background: #d8d8d8;
 }
 
 .tree-and-actions {
