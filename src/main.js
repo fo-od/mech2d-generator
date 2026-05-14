@@ -2,7 +2,7 @@ import {MechanismLigament2d, MechanismRoot2d, findObjectByName} from "./mech2d.j
 import {refreshProperties} from "./properties.js";
 
 // where it all starts
-const root = new MechanismRoot2d("root", 250, 250);
+export const root = new MechanismRoot2d("root", 250, 250);
 
 /* Tree stuff */
 const tree = document.getElementById("mech-objects");
@@ -77,8 +77,8 @@ appendButton.addEventListener("click", () => {
       getUniqueLigamentName(),
       20,
       -90,
-      10,
-      "#00aa00",
+      6,
+      "#ffa500",
   );
   target.object.append(ligament);
   target.nameElement.classList.add("caret");

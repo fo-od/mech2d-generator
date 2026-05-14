@@ -63,6 +63,10 @@ export class MechanismLigament2d extends MechanismObject2d {
         this.lineWidth = lineWidth;
         this.color = color;
     }
+    
+    generateCode(root) {
+        return (`MechanismLigament2d ${this.name} = ${root.name}.append(new MechanismLigament2d("${this.name}", ${this.length}, ${this.angle}, ${this.lineWidth}, new Color8Bit("${this.color}") ) );\n`);
+    }
 
     _calculateEndPoint(angle) {
         const ex = this.length * Math.cos((angle * Math.PI) / 180);
