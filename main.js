@@ -54,33 +54,11 @@ treeRoot.addEventListener("click", (e) => {
   caret.classList.toggle("caret-down");
 });
 
-/* Context Menu */
-const contextMenu = document.getElementById("contextMenu");
-const appendButton = contextMenu.querySelector("#append");
-const deleteButton = contextMenu.querySelector("#delete");
-
-// hide context menu on click
-document.onclick = function () {
-  contextMenu.style.display = "none";
-};
-
-// show context menu on right click of an object in the tree
-treeRoot.addEventListener("contextmenu", (e) => {
-  e.preventDefault();
-  updateSelection(e);
-  
-  // dont show context menu for mechanism
-  if (!selectedObject) {
-    return
-  }
-  
-  contextMenu.style.display = "block";
-  contextMenu.style.left = e.pageX + "px";
-  contextMenu.style.top = e.pageY + "px";
-});
+/* Ligament Actions */
+const appendButton = document.getElementById("append");
+const deleteButton = document.getElementById("delete");
 
 appendButton.addEventListener("click", (e) => {
-  e.stopPropagation();
   const target = getSelectedTreeTarget();
   if (!target) {
     return;
@@ -94,13 +72,11 @@ appendButton.addEventListener("click", (e) => {
       "#00aa00",
   );
   target.object.append(ligament);
-  contextMenu.style.display = "none";
   target.nameElement.classList.add("caret");
   ligament.addToList(target.childList);
 });
 
 deleteButton.addEventListener("click", (e) => {
-  e.stopPropagation();
   const target = getSelectedTreeTarget();
   if (!target || !target.object.parent) {
     return;
@@ -111,13 +87,14 @@ deleteButton.addEventListener("click", (e) => {
   if (selectedItem) {
     selectedItem.remove();
   }
-
+  
+  const parent = findObjectByName(target.object.parent.name, root);
+  selectedObject = parent;
+  refreshProperties(selectedObject, canvas);
+  
   target.object.parent.objects.delete(target.object.name);
-  const parentTreeName = findObjectByName(target.object.parent.name, root);
-  selectedObject = parentTreeName;
-  contextMenu.style.display = "none";
 
-  const parentNameElement = document.getElementById(parentTreeName);
+  const parentNameElement = document.getElementById(parent.name);
   if (parentNameElement) {
     parentNameElement.classList.add("outset");
     const parentItem = parentNameElement.closest("li");
