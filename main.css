@@ -1,4 +1,7 @@
-/* make it fill the screen */
+/* ==========================================================================
+   Base page styles
+   ========================================================================== */
+
 html,
 body {
     height: 100vh;
@@ -19,6 +22,11 @@ body {
         sans-serif;
 }
 
+
+/* ==========================================================================
+   Layout helpers
+   ========================================================================== */
+
 .flex-row {
     display: flex;
     flex-direction: row;
@@ -29,10 +37,41 @@ body {
     flex-direction: column;
 }
 
+.space {
+    flex: 1 1 auto;
+}
+
+
+/* ==========================================================================
+   Main app layout
+   ========================================================================== */
+
 #container {
     height: 100vh;
     background: #d8d8d8;
 }
+
+#side-panel {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+#bottom-panel {
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+#bottom-panel > .group {
+    min-height: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ==========================================================================
+   Canvas
+   ========================================================================== */
 
 .canvas-area {
     flex: 0 0 auto;
@@ -53,50 +92,14 @@ body {
     flex: 0 0 auto;
 }
 
-#side-panel {
-    flex: 1 1 auto;
-    min-width: 0;
-}
 
-#bottom-panel {
-    flex: 1 1 auto;
-    min-height: 0;
-}
-
-#bottom-panel > .group {
-    min-height: 0;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-}
-
-#properties {
-    overflow-y: auto;
-}
-
-.divider {
-    border-top: 2px solid #848584;
-    border-bottom: 2px solid #fefefe;
-    margin: 0.25rem 0 0.25rem 0;
-    justify-self: center;
-    width: 100%;
-}
+/* ==========================================================================
+   Panels stuff
+   ========================================================================== */
 
 .panel {
     gap: 0.5rem;
     flex: 1 1 auto;
-}
-
-.outset {
-    border-style: solid;
-    border-width: 2px;
-    border-color: #fefefe #848584 #848584 #fefefe !important;
-}
-
-.inset {
-    border-style: solid;
-    border-width: 2px;
-    border-color: #848584 #fefefe #fefefe #848584 !important;
 }
 
 .group {
@@ -122,7 +125,40 @@ body {
     font-weight: bold;
 }
 
-/* object tree */
+.divider {
+    border-top: 2px solid #848584;
+    border-bottom: 2px solid #fefefe;
+    margin: 0.25rem 0 0.25rem 0;
+    justify-self: center;
+    width: 100%;
+}
+
+
+/* ==========================================================================
+   Border stuff
+   ========================================================================== */
+
+.outset {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #fefefe #848584 #848584 #fefefe !important;
+}
+
+.inset {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #848584 #fefefe #fefefe #848584 !important;
+}
+
+#properties {
+    overflow-y: auto;
+}
+
+
+/* ==========================================================================
+   Object tree
+   ========================================================================== */
+
 ul,
 #tree {
     list-style-type: none;
@@ -138,6 +174,12 @@ ul,
     padding-left: 1rem;
 }
 
+.tree-and-actions {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 .name {
     display: inline-block;
     cursor: pointer;
@@ -150,9 +192,11 @@ ul,
     padding-right: 0.1rem;
     margin-bottom: 2px;
 }
+
 .name:hover {
     border-color: #fefefe #848584 #848584 #fefefe;
 }
+
 .name:active {
     border-color: #848584 #fefefe #fefefe #848584;
 }
@@ -175,30 +219,23 @@ ul,
     display: block;
 }
 
-/* context menu */
-.context-menu {
-    position: absolute;
-    background: #d8d8d8;
-    padding: 0.25rem;
-    z-index: 999;
-}
-.context-menu > button {
+
+/* ==========================================================================
+    misc
+   ========================================================================== */
+
+button {
     font-size: 0.9rem;
     background: unset;
-    border-color: transparent;
     color: #0a0a0a;
-    width: 100%;
-    text-align: left;
-}
-.context-menu > button:hover {
+    padding-top: 2px;
+    padding-bottom: 2px;
+
     border-style: solid;
     border-width: 2px;
     border-color: #fefefe #848584 #848584 #fefefe;
 }
-.context-menu > button:active {
-    padding-top: 2px;
-    padding-bottom: 0;
-    border-style: solid;
-    border-width: 2px;
+
+button:active {
     border-color: #848584 #fefefe #fefefe #848584;
 }
