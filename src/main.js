@@ -10,6 +10,15 @@ const treeRoot = document.getElementById("tree");
 
 let selectedObject = null;
 
+/* probably a really bad way of pre-selecting the root but who cares (not me) */
+{
+  const mech = document.getElementById("mech");
+  const nested = mech.parentElement.querySelector(":scope > .nested");
+
+  nested.classList.toggle("active");
+  mech.classList.toggle("caret-down");
+}
+
 function updateSelection(e) {
   // get the selected object in the tree
   const selectedName = e.target.closest(".name");
