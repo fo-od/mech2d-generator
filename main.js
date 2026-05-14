@@ -58,7 +58,7 @@ treeRoot.addEventListener("click", (e) => {
 const appendButton = document.getElementById("append");
 const deleteButton = document.getElementById("delete");
 
-appendButton.addEventListener("click", (e) => {
+appendButton.addEventListener("click", () => {
   const target = getSelectedTreeTarget();
   if (!target) {
     return;
@@ -76,7 +76,7 @@ appendButton.addEventListener("click", (e) => {
   ligament.addToList(target.childList);
 });
 
-deleteButton.addEventListener("click", (e) => {
+deleteButton.addEventListener("click", () => {
   const target = getSelectedTreeTarget();
   if (!target || !target.object.parent) {
     return;
