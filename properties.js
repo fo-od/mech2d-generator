@@ -73,6 +73,7 @@ export function refreshProperties(selectedObject, canvas) {
         angle.setAttribute("type", "number");
         angle.setAttribute("value", selectedObject.angle);
         angle.addEventListener("input", (e) => {
+            e.target.value = e.target.value % 360;
             selectedObject.angle = Number(e.target.value);
         });
         const angleLabel = document.createElement("label");
